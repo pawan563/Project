@@ -37,8 +37,6 @@
                   <th>Price</th>                      
                   <th>Status</th>
                   <th>Product Image</th>
-
-
                   <th>Action</th> 
               </tr>
           </thead> 

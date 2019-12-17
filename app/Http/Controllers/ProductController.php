@@ -27,7 +27,7 @@ class ProductController extends Controller
         
         $result = $this->filters($result,$request);
 
-        $result = $result->paginate(3);
+        // $result = $result->paginate(3);
         if($request->ajax()){
 
             return view('product/listing', compact('result'));
@@ -47,7 +47,7 @@ class ProductController extends Controller
         try
         {
             $result = $this->product->StoreProduct($req);
-            dd($result);
+           
             if ($result)
             {
                 return response()->json(['message' => 'Product Insertion Success', 'path' => url('/products') ], 200);
@@ -97,7 +97,6 @@ class ProductController extends Controller
         {
             $output = "";
             $result = Product::where('product_name', 'LIKE', '%' . $request->search . "%")
-                ->orwhere('product_category', 'LIKE', '%' . $request->search . "%")
                 ->orwhere('desription', 'LIKE', '%' . $request->search . "%")
                 ->orwhere('vks', 'LIKE', '%' . $request->search . "%")
                 ->orwhere('price', 'LIKE', '%' . $request->search . "%")

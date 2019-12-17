@@ -11,7 +11,17 @@ class ProductRepository{
 
 	
 	public function getProduct(){
-		return Product::orderBy('id',"desc");
+		//$books = App\Book::with('author')->get();
+
+		return Product::with('Categories')->orderBy('id',"desc")->paginate(3);
+		 
+		// echo '<pre>',
+		// print_r($result),
+		// '</pre>';
+		//dd($result);
+		
+		//return Product::orderBy('id',"desc");
+		
 	} 
 
 	public function getCategoryData(){

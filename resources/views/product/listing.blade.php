@@ -2,7 +2,11 @@
     <tr>      
         <th>{{++$key}}</th>
         <th>{{$product->product_name}}</th>
-        <th>{{$product->product_category}}</th>
+        
+        <th> @foreach($product->categories as $category)
+        {{$category->category_name. ','}}
+          @endforeach
+        </th>
         <th>{{$product->desription}}</th>
         <th>{{$product->vks}}</th>
         <th>{{$product->price}}</th>
