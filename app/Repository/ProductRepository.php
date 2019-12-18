@@ -19,7 +19,6 @@ class ProductRepository{
 		// print_r($result),
 		// '</pre>';
 		//dd($result);
-		
 		//return Product::orderBy('id',"desc");
 		
 	} 
