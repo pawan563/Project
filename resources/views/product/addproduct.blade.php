@@ -81,10 +81,11 @@
 
                         <div class="col-md-9">
                             <select name="status" valure="{{ $data->status ?? old('status') }}" class="form-control">
-                            <span class="error_status" ></span>
+                            <option value="">**Select Status**</option>
                             <option value="1">Active</option>
                             <option value="0">In-Active</option>
-                            </select>  
+                            </select> 
+                            <span class="error_status" ></span> 
                         </div>
                     </div>              
 
