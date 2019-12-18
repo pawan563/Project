@@ -20,7 +20,8 @@ $( document ).ready(function() {
                 location.reload();        
           },
           error: function(error){
-             console.log(error.message);              }  
+             console.log(error.message);            
+             }  
           });
         }   
         );

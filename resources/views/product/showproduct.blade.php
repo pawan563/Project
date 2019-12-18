@@ -4,58 +4,31 @@
 
 @section('content')
 <div class="col-sm-9">
-  
+
      <form id="filterForm">
-     <div class="pull-left">
-       <input type="text" class="form-controller" placeholder="Search" id="search" name="search"></input>
-     </div>
-     <div class="pull-center">
-     <level>&nbsp; &nbsp; &nbsp; Group by Search :  </level>
-     <select name="status" class="groupsearch" id="groupsearch">
+        <div class="pull-left">
+        <input type="text" class="form-controller" placeholder="Search" id="search" name="search"></input>
+        </div>
+        <div class="pull-center">
+        <level>&nbsp; &nbsp; &nbsp; Group by Search :  </level>
+        <select name="status" class="groupsearch" id="groupsearch">
             <option value="">All</option>
             <option value="1">Active</option>
             <option value="0">In-Active</option>
-    </select> 
+        </select> 
+        </div>
     </form>
-
-
-     </div>
-      <div class="pull-right">
+     <div class="pull-right">
         <a href=" {{route('products.create')}}" class="btn btn btn-success">{{ __('Add New Product') }}
         </a>
-      </div><br>
-      <hr><br>
-      <div class='row'> 
-        @if($message = Session::get('success'))
-        <div class="alert alert-success">{{$message}}</div>
-        @endif  
-      <table class="table table-bordered Job_table">  
-        <thead>
-          <tr id="table">      
-                  <th>Sr No</th>
-                  <th>Product Name</th>
-                  <th>Product Category</th>
-                  <th>Product Description</th>
-                  <th>SKV</th>
-                  <th>Price</th>                      
-                  <th>Status</th>
-                  <th>Product Image</th>
-                  <th>Action</th> 
-              </tr>
-          </thead> 
-          <tbody>
-
-         @include('product.listing')
-
-          </tbody>          
-         </table>
-        
-    </tr>   
-
-         </div>
-         </div>   
+      </div>
+    <div id="listing">
+    @include('product.listing')
     </div>
-@endsection
+         
+    </div>
+
+@endsection 
 
 
 
@@ -111,7 +84,6 @@
     var path = window.location.href;
     ajaxRequest(path,'get');
     });
-  
  
     // Group wise Search Active/ Inactive and All
     $(document).on('change', '#groupsearch', function() {
@@ -126,8 +98,8 @@
             url : url,
             data:formAllData,
               success:function(data){
-              $('tbody').html();
-              $('tbody').html(data);
+              $('#listing').html();
+              $('#listing').html(data);
               }
         });
     }

@@ -13,8 +13,10 @@ class ProductRepository{
 	public function getProduct(){
 		//$books = App\Book::with('author')->get();
 
-		return Product::with('Categories')->orderBy('id',"desc");
+		$result=Product::with('Categories')->orderBy('id',"desc");
 		 
+
+		return ($result);
 		// echo '<pre>',
 		// print_r($result),
 		// '</pre>';
@@ -76,12 +78,27 @@ class ProductRepository{
 	}
 
 
-	public function UpdateProductData($req, $id)
-	{	
-	return Product::where('id', $id)
-		 ->update($req->except('_token','submit', '_method'));	
-	}
+	public function UpdateProductData($request, $id)
+	{
+		$filename = "";
+		if ($request->hasFile('image')) {
+		$file = $request->file('image');
+		// generate a new filename. getClientOriginalExtension() for the file extension
+		$filename = 'product-image-' . time() . '.' . $file->getClientOriginalExtension();		// save to storage/app/photos as the new $filename
+		 $path = $file->storeAs('public/images', $filename);
+		}
+		$product = new Product();
+		$product->product_name = $request->input('product_name');
+		$product->vks = $request->input('vks');
+		$product->desription = $request->input('desription');
+		$product->status = $request->input('status');
+		$product->price = $request->input('price');
+		$product->image = $filename;
+		$product->save();
+		$product->Categories()->attach($request->product_category);
 
+		return true;		
+	}
 
 }
    
