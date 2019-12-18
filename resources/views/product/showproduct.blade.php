@@ -4,7 +4,8 @@
 
 @section('content')
 <div class="col-sm-9">
-<form id="filterForm">
+  
+     <form id="filterForm">
      <div class="pull-left">
        <input type="text" class="form-controller" placeholder="Search" id="search" name="search"></input>
      </div>
@@ -16,6 +17,8 @@
             <option value="0">In-Active</option>
     </select> 
     </form>
+
+
      </div>
       <div class="pull-right">
         <a href=" {{route('products.create')}}" class="btn btn btn-success">{{ __('Add New Product') }}

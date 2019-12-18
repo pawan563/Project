@@ -31,6 +31,6 @@
 @endforelse
 <tr>
 <td colspan=9>
-{!! $result->links() !!} 
+{{$result->links()}} 
 </td>
 </tr>

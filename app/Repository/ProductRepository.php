@@ -13,7 +13,7 @@ class ProductRepository{
 	public function getProduct(){
 		//$books = App\Book::with('author')->get();
 
-		return Product::with('Categories')->orderBy('id',"desc")->paginate(3);
+		return Product::with('Categories')->orderBy('id',"desc");
 		 
 		// echo '<pre>',
 		// print_r($result),

@@ -27,7 +27,7 @@ class ProductController extends Controller
         
         $result = $this->filters($result,$request);
 
-        // $result = $result->paginate(3);
+        $result = $result->paginate(3);
         if($request->ajax()){
 
             return view('product/listing', compact('result'));
